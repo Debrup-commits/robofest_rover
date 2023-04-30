@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/kratos/cyborg_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/kratos/cyborg_ws/src/ros_astra_camera/include/**",
+        "/home/kratos/cyborg_ws/src/eyrc_2022_hb/eyrc-2022_holabot/include/**",
+        "/home/kratos/cyborg_ws/src/eyrc_2022_hb/eyrc_hb_communication/include/**",
+        "/home/kratos/cyborg_ws/src/eyrc_2022_hb/eyrc_hb_control/include/**",
+        "/home/kratos/cyborg_ws/src/eyrc_2022_hb/eyrc_hb_feed/include/**",
+        "/home/kratos/cyborg_ws/src/eyantra-Agribot-2021/agribot_tasks/gazebo_ros_link_attacher/include/**",
+        "/home/kratos/cyborg_ws/src/waypoint_nav/hector_slam/hector_mapping_nav/include/**",
+        "/home/kratos/cyborg_ws/src/igvc_ros/igvc_navigate/include/**",
+        "/home/kratos/cyborg_ws/src/eyantra-Agribot-2021/agribot_tasks/robotiq_85_gripper-master/robotiq_85_simulation/roboticsgroup_gazebo_plugins/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
