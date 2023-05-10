@@ -1,0 +1,31 @@
+frequency: 50
+
+odod0: /odometry/filtered
+odom0_config: [false, false, false,
+               false, false, false,
+               true, true, true,
+               false, false, true,
+               false, false, false]
+odom0_differential: true
+
+imu0: /imu/data
+imu0_config: [false, false, false,
+              true, true, true,
+              false, false, false,
+              true, true, true,
+              false, false, false]
+imu0_differential: false
+
+odom1: /navsat/fix
+
+odom1_config: [false, false, false,
+              false, false, false,
+              true, true, true,
+              false, false, true,
+              false, false, false]
+odom1_differential: false
+
+odom_fram: odom
+base_link_frame: base_link
+world_frame: map
+map_frame: map
