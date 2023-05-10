@@ -1,0 +1,18 @@
+<launch>
+
+    <include file="$(find gujju)/launch/start_navsat.launch" />
+        <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_with_gps">
+        <rosparam command="load" file="$(find gujju)/config/robot_localization_with_gps.yaml" />
+        </node>
+        
+    <!-- run map map_server -->
+    <include file="$(find gujju)/launch/map_server.launch" />
+
+    <!-- run move_base -->
+    <include file="$(find gujju)/launch/with_map_move_base.launch" />
+
+    <!-- start rviz localization -->
+    <!-- <include file="$(find gujju)/launch/view_robot.launch" >
+        <arg name="config" value="localization" /> -->
+    <!-- </include> -->
+</launch>

@@ -1,0 +1,16 @@
+<launch>
+    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true">
+
+        <param name="magnetic_declination_radian" value="0"/>
+        <param name="yaw_offset" value="0"/>
+        <param name="zero_altitude" value="true"/>
+
+        <param name="broadcast_utm_transform" value="false"/>
+        <param name="publish_filtered_gps" value="false"/>
+
+        <param name="use_odometry_yaw" value="false"/>
+        <param name="wait_for_datum" value="false"/>
+
+    </node>
+
+</launch>
