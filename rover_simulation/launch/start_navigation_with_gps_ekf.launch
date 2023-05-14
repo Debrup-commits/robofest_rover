@@ -1,0 +1,56 @@
+<launch>
+    <include file="$(find robofest_rover)/launch/map_server.launch" />
+
+    <!-- <include file="$(find robofest_rover)/launch/start_navsat.launch" />
+        <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_with_gps">
+        <rosparam command="load" file="$(find robofest_rover)/config/robot_localization_with_gps.yaml" />
+        </node> -->
+        
+    <!-- run map map_server -->
+    <!-- <include file="$(find robofest_rover)/launch/map_server.launch" /> -->
+
+    <!-- run move_base -->
+
+    <!-- start rviz localization -->
+    <!-- <include file="$(find robofest_rover)/launch/view_robot.launch" >
+        <arg name="config" value="localization" /> -->
+    <!-- </include> -->
+
+    <!-- Launch ground-truth tf publisher -->
+    <include file="$(find robofest_rover)/launch/gt_tf_publisher.launch"/>
+
+
+    <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local"
+        clear_params="true" output="screen">
+    <rosparam command="load" file="$(find robofest_rover)/params/ekf_local.yaml"/>
+     Output topic remapping
+    <remap from="odometry/filtered" to="odometry/filtered_odom"/> 
+    </node> -->
+
+  <!-- Launch Global EKF node (Map frame) -->
+    <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global"
+        clear_params="true" output="screen">
+    <rosparam command="load" file="$(find robot_localization)/params/ekf_global.yaml"/>
+     Output topic remapping
+    <remap from="odometry/filtered" to="odometry/filtered_map"/> 
+    </node> -->
+
+
+    <!-- Load parameters for dual EKF + navsat_transform nodes -->
+    <rosparam command="load" file="$(find robofest_rover)/params/dual_ekf_navsat.yaml" />
+
+    <!-- Launch local EKF node (Odom frame) -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local"
+        clear_params="true" output="screen">
+    <remap from="odometry/filtered" to="odometry/ekf_local"/>
+    </node>
+
+    <!-- Launch Global EKF node (Map frame) -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global"
+        clear_params="true" output="screen">
+    <remap from="odometry/filtered" to="odometry/ekf_global"/>
+    </node>
+
+    <include file="$(find robofest_rover)/launch/with_map_move_base.launch" />
+
+</launch>
