@@ -15,8 +15,8 @@
         <remap from="/gps/fix" to="/your/gps/fix/topic" />
         <remap from="/odometry/filtered" to="/your/robot_localization/output/topic" /> -->
 
-        <remap from="gps/fix" to="garmin_gps/fix"/>
-        <remap from="odometry/filtered" to="odometry/filtered_map"/>
+        <remap from="gps/fix" to="navsat/fix"/>
+        <remap from="odometry/filtered" to="/jackal_velocity_controller/odom"/>
 
     </node>
 
