@@ -38,7 +38,7 @@
   <include file="$(find robofest_rover)/launch/start_navigation_with_gps_ekf.launch" />
 
   <!-- RVIZ-->
-  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find robofest_rover)/launch/rviz.rviz" />
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find robofest_rover)/rviz/odom_mapping.rviz" />
   <!-- <node if="$(arg rviz_local)" pkg="rviz" type="rviz" name="rviz_local"
         args="-d $(find robofest_rover)/launch/rviz.rviz"/> -->
 

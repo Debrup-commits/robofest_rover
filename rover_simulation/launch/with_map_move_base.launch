@@ -9,7 +9,7 @@
         <rosparam file="$(find robofest_rover)/params/base_local_planner_params.yaml" command="load"  /> 
         <rosparam file="$(find robofest_rover)/params/move_base_params.yaml" command="load" /> 
 
-        <param name="base_global_planner" type="string" value="navfn/NavfnROS"/>
+        <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
         <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
 
         <remap from="jackal_velocity_controller/odom" to="odometry/filtered"/>

@@ -1,8 +1,8 @@
 <launch>
-    <include file="$(find robofest_rover)/launch/map_server.launch" />
+    <!-- <include file="$(find robofest_rover)/launch/map_server.launch" /> -->
 
-    <!-- <include file="$(find robofest_rover)/launch/start_navsat.launch" />
-        <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_with_gps">
+    <include file="$(find robofest_rover)/launch/start_navsat.launch" />
+        <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_with_gps">
         <rosparam command="load" file="$(find robofest_rover)/config/robot_localization_with_gps.yaml" />
         </node> -->
         
@@ -17,7 +17,7 @@
     <!-- </include> -->
 
     <!-- Launch ground-truth tf publisher -->
-    <include file="$(find robofest_rover)/launch/gt_tf_publisher.launch"/>
+    <!-- <include file="$(find robofest_rover)/launch/gt_tf_publisher.launch"/> -->
 
 
     <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local"
