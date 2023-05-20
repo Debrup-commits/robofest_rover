@@ -6,7 +6,7 @@ ekf_local:
   print_diagnostics: true
   debug: false
 
-  map_frame: UTM
+  map_frame: map
   odom_frame: odom
   base_link_frame: base_link
   world_frame: odom
@@ -15,19 +15,19 @@ ekf_local:
   odom0_config: [false, false, false,
                  false, false, false,
                  true,  true,  true,
-                 false, false, false,
+                 false, false, true,
                  false, false, false]
   odom0_queue_size: 10
   odom0_nodelay: false
-  odom0_differential: false
+  odom0_differential: true
   odom0_relative: false
 
   imu0: imu/data
   imu0_config: [false, false, false,
-                true,  true,  true,
+                false,  false,  true,
                 false, false, false,
-                true,  true,  true,
-                false, false, false]
+                false,  false,  true,
+                true, false, false]
   imu0_queue_size: 10
   imu0_nodelay: false
   imu0_differential: false
@@ -77,38 +77,38 @@ ekf_global:
   smooth_lagged_data: true
   history_length: 1.0
 
-  map_frame: UTM
+  map_frame: map
   odom_frame: odom
   base_link_frame: base_link
-  world_frame: UTM
+  world_frame: map
 
   odom0: /jackal_velocity_controller/odom
   odom0_config: [false, false, false,
                  false, false, false,
                  true,  true,  true,
-                 false, false, false,
+                 false, false, true,
                  false, false, false]
   odom0_queue_size: 10
   odom0_nodelay: false
-  odom0_differential: false
+  odom0_differential: true
   odom0_relative: false
 
   imu0: imu/data
   imu0_config: [false, false, false,
-                true,  true,  false,
+                false,  false,  true,
                 false, false, false,
-                true,  true,  true,
-                false, false, false]
+                false,  false,  true,
+                true, false, false]
   imu0_queue_size: 10
   imu0_nodelay: false
   imu0_differential: false
   imu0_relative: false
 
   odom1: odometry/gps
-  odom1_config: [true,  true,  true,
+  odom1_config: [false, false, false,
                  false, false, false,
-                 false, false, false,
-                 false, false, false,
+                 true, true, false,
+                 false, false, true,
                  false, false, false]
   odom1_queue_size: 10
   odom1_nodelay: false
@@ -151,7 +151,7 @@ ekf_global:
 
 navsat_transform:
   frequency: 50
-  delay: 3.0
+  delay: 2.0
   magnetic_declination_radians: 0.0 #0.0429351  # For lat/long 55.944831, -3.186998
   yaw_offset: 0.0 # 1.570796327 IMU reads 0 facing magnetic north, not east
   zero_altitude: false
