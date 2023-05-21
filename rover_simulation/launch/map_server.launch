@@ -1,3 +1,5 @@
 <launch>
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find gujju)/maps/new_map.yaml"/>
+    <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find robofest_rover)/maps/new_map.yaml"/> -->
+    <arg name="map_file" default="$(find robofest_rover)/maps/new_map.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
 </launch>

@@ -11,3 +11,4 @@ oscillation_distance: 0.5
 
 recovery_behavior_enabled: true
 clearing_rotation_allowed: true
+global_frame: odom

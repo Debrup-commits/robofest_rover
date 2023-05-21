@@ -29,7 +29,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
         <geometry>
-          <mesh filename="package://jackal_description/meshes/jackal-wheel.stl"/>
+          <mesh filename="$(find robofest_rover)/meshes/jackal-wheel.stl"/>
         </geometry>
         <material name="black" />
       </visual>
@@ -104,7 +104,7 @@
     <visual>
       <origin xyz="0 0 ${footprint_vertical_offset}" rpy="${PI/2} 0 ${PI/2}"/>
       <geometry>
-        <mesh filename="package://jackal_description/meshes/jackal-base.stl"/>
+        <mesh filename="$(find robofest_rover)/meshes/jackal-base.stl"/>
       </geometry>
       <material name="dark_grey" />
     </visual>
@@ -130,7 +130,7 @@
     <link name="front_fender_link">
       <visual>
         <geometry>
-          <mesh filename="package://jackal_description/meshes/jackal-fender.stl"/>
+          <mesh filename="$(find robofest_rover)/meshes/jackal-fender.stl"/>
         </geometry>
         <material name="yellow" />
       </visual>
@@ -141,7 +141,7 @@
     <link name="front_fender_link">
       <visual>
         <geometry>
-          <mesh filename="package://jackal_description/meshes/accessory_fender.stl"/>
+          <mesh filename="$(find robofest_rover)/meshes/accessory_fender.stl"/>
         </geometry>
         <material name="yellow" />
       </visual>
@@ -165,7 +165,7 @@
     <link name="rear_fender_link">
       <visual>
         <geometry>
-          <mesh filename="package://jackal_description/meshes/jackal-fender.stl"/>
+          <mesh filename="$(find robofest_rover)/meshes/jackal-fender.stl"/>
         </geometry>
         <material name="yellow" />
       </visual>
@@ -176,7 +176,7 @@
     <link name="rear_fender_link">
       <visual>
         <geometry>
-          <mesh filename="package://jackal_description/meshes/accessory_fender.stl"/>
+          <mesh filename="$(find robofest_rover)/meshes/accessory_fender.stl"/>
         </geometry>
         <material name="yellow" />
       </visual>
@@ -246,26 +246,28 @@
     <origin xyz="${mount_spacing} 0 0" />
   </joint>
 
-   <joint name="hokuyo_joint" type="fixed">
+   <joint name="lidar_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz="0 0 ${chassis_height}" rpy="0 0 0"/>
+    <origin xyz="0 0 ${chassis_height+0.012}" rpy="0 0 0"/>
     <parent link="chassis_link"/>
-    <child link="hokuyo_link"/>
+    <child link="lidar"/>
   </joint>
 
   <!-- Hokuyo Laser -->
-  <link name="hokuyo_link">
+  <link name="lidar">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <box size="0.1 0.1 0.1"/>
+    <mesh
+          filename="$(find robofest_rover)/meshes/lidar.STL" />
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://gujju/meshes/hokuyo.dae"/>
+        <mesh
+          filename="$(find robofest_rover)/meshes/lidar.STL" />
       </geometry>
     </visual>
 
@@ -277,5 +279,5 @@
   </link>
 
   <!-- Bring in simulation data for Gazebo. -->
-  <xacro:include filename="$(find gujju)/urdf/jackal.gazebo" />
+  <xacro:include filename="$(find robofest_rover)/urdf/jackal.gazebo" />
 </robot>
