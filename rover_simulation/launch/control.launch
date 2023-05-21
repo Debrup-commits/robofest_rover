@@ -2,7 +2,7 @@
 
   <!-- <arg name="enable_ekf" default="$(optenv ENABLE_EKF true)"/> -->
 
-  <rosparam command="load" file="$(find robofest_rover)/config/control.yaml" />
+  <rosparam command="load" file="$(find rover_simulation)/config/control.yaml" />
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner"
         args="jackal_joint_publisher jackal_velocity_controller" />
@@ -29,7 +29,7 @@
   </group> -->
 
   <node pkg="twist_mux" type="twist_mux" name="twist_mux">
-    <rosparam command="load" file="$(find robofest_rover)/config/twist_mux.yaml" />
+    <rosparam command="load" file="$(find rover_simulation)/config/twist_mux.yaml" />
     <remap from="cmd_vel_out" to="jackal_velocity_controller/cmd_vel"/>
   </node>
 
