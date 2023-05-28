@@ -1,0 +1,6 @@
+<launch>
+    <!-- launch the world -->
+    <include file="$(find rover_simulation)/launch/inspection_world.launch"/>
+    <!-- launch the rover -->
+    <include file="$(find rover_simulation)/launch/spawn_rover.launch"/>
+</launch>

@@ -1,0 +1,7 @@
+<launch>
+    <!-- load an empty map -->
+    <arg name="map_file" default="$(find rover_localisation)/maps/empty_map.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+</launch>
+
+ 
