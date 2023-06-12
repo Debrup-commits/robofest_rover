@@ -5,18 +5,21 @@
   <rosparam command="load" file="$(find rover_localisation)/params/navsat_params.yaml" />
   
   <!-- initialise the local ekf instance -->
-  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true"/>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true">
+    <remap from="/wheel/odometry" to="/odom"/>
+    <remap from="/odometry/filtered" to="/odometry/filtered/local"/>
+  </node>
 
   <!-- initialise the global ekf instance -->
   <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_map" clear_params="true">
-    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+    <remap from="/wheel/odometry" to="/odom"/>
+    <remap from="/odometry/filtered" to="/odometry/filtered/global"/>
   </node>
   
   <!-- initialise navsat transform instance -->
-  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true" output="screen">
-      <remap from="odometry/filtered" to="odometry/filtered_map"/>
-      <remap from="gps/fix" to="/navsat/fix"/>
-      <remap from="imu/data" to="/imu/data"/>
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true">
+      <remap from="/gps/fix" to="/navsat/fix"/>
+      <remap from="/odometry/filtered" to="/odometry/filtered/global"/>
   </node>
 
 </launch>

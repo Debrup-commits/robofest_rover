@@ -5,13 +5,19 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /RobotModel1
+        - /RobotModel1/Status1
+        - /Odom coord frame1
+        - /Laser coord frame1
         - /Wheel Odometry1/Covariance1/Position1
         - /Wheel Odometry1/Covariance1/Orientation1
         - /Gps Odometry1/Shape1
         - /Gps Odometry1/Covariance1
+        - /EKF Odometry1
         - /EKF Odometry1/Shape1
         - /EKF Odometry1/Covariance1/Position1
         - /EKF Odometry1/Covariance1/Orientation1
+        - /Local costmap1
       Splitter Ratio: 0.5268459916114807
     Tree Height: 779
   - Class: rviz/Selection
@@ -31,7 +37,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -72,40 +78,60 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_depth_frame:
+        gps_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_rgb_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        caster_support:
+        left_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        caster_wheel:
+        left_wheel_1_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        left_wheel:
+        left_wheel_2_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        lidar:
+        left_wheel_3_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        right_wheel:
+        lidar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        main_left_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        main_right_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wheel_1_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wheel_2_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wheel_3_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -120,15 +146,6 @@ Visualization Manager:
       Class: rviz/Axes
       Enabled: true
       Length: 1
-      Name: Map Coord frame
-      Radius: 0.10000000149011612
-      Reference Frame: map
-      Show Trail: false
-      Value: true
-    - Alpha: 1
-      Class: rviz/Axes
-      Enabled: true
-      Length: 1
       Name: Gps/base coord frame
       Radius: 0.10000000149011612
       Reference Frame: base_link
@@ -138,9 +155,18 @@ Visualization Manager:
       Class: rviz/Axes
       Enabled: true
       Length: 1
+      Name: Odom coord frame
+      Radius: 0.10000000149011612
+      Reference Frame: odom
+      Show Trail: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Axes
+      Enabled: true
+      Length: 1
       Name: Laser coord frame
       Radius: 0.10000000149011612
-      Reference Frame: lidar
+      Reference Frame: lidar_link
       Show Trail: false
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -175,7 +201,7 @@ Visualization Manager:
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Arrow
-      Topic: /encoder_odom
+      Topic: /odom
       Unreliable: true
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -245,7 +271,7 @@ Visualization Manager:
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Arrow
-      Topic: /odometry/filtered_map
+      Topic: /odometry/filtered/global
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -360,11 +386,39 @@ Visualization Manager:
       Unreliable: false
       Use Timestamp: false
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -387,7 +441,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: 5.674987316131592
+      Angle: 8.439990043640137
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -397,10 +451,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 59.14784622192383
+      Scale: 71.20777893066406
       Target Frame: <Fixed Frame>
-      X: 4.094822883605957
-      Y: 0.9433178305625916
+      X: 1.6588711738586426
+      Y: -0.4958968162536621
     Saved: ~
 Window Geometry:
   Displays:

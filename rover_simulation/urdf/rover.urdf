@@ -26,7 +26,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/base_link.STL" />
+          filename="package://rover_simulation/meshes/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -40,7 +40,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/base_link.STL" />
+          filename="package://rover_simulation/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -66,7 +66,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/main_right_Link.STL" />
+          filename="package://rover_simulation/meshes/main_right_Link.STL" />
       </geometry>
       <material
         name="">
@@ -80,7 +80,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/main_right_Link.STL" />
+          filename="package://rover_simulation/meshes/main_right_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -124,7 +124,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_Link.STL" />
+          filename="package://rover_simulation/meshes/right_Link.STL" />
       </geometry>
       <material
         name="">
@@ -138,7 +138,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_Link.STL" />
+          filename="package://rover_simulation/meshes/right_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -182,7 +182,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_wheel_1_Link.STL" />
+          filename="package://rover_simulation/meshes/right_wheel_1_Link.STL" />
       </geometry>
       <material
         name="">
@@ -196,7 +196,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_wheel_1_Link.STL" />
+          filename="package://rover_simulation/meshes/right_wheel_1_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -240,7 +240,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_wheel_2_Link.STL" />
+          filename="package://rover_simulation/meshes/right_wheel_2_Link.STL" />
       </geometry>
       <material
         name="">
@@ -254,7 +254,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_wheel_2_Link.STL" />
+          filename="package://rover_simulation/meshes/right_wheel_2_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -298,7 +298,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_wheel_3_Link.STL" />
+          filename="package://rover_simulation/meshes/right_wheel_3_Link.STL" />
       </geometry>
       <material
         name="">
@@ -312,7 +312,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/right_wheel_3_Link.STL" />
+          filename="package://rover_simulation/meshes/right_wheel_3_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -356,7 +356,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/main_left_Link.STL" />
+          filename="package://rover_simulation/meshes/main_left_Link.STL" />
       </geometry>
       <material
         name="">
@@ -370,7 +370,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/main_left_Link.STL" />
+          filename="package://rover_simulation/meshes/main_left_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -414,7 +414,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_Link.STL" />
+          filename="package://rover_simulation/meshes/left_Link.STL" />
       </geometry>
       <material
         name="">
@@ -428,7 +428,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_Link.STL" />
+          filename="package://rover_simulation/meshes/left_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -472,7 +472,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_wheel_1_Link.STL" />
+          filename="package://rover_simulation/meshes/left_wheel_1_Link.STL" />
       </geometry>
       <material
         name="">
@@ -486,7 +486,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_wheel_1_Link.STL" />
+          filename="package://rover_simulation/meshes/left_wheel_1_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -530,7 +530,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_wheel_2_Link.STL" />
+          filename="package://rover_simulation/meshes/left_wheel_2_Link.STL" />
       </geometry>
       <material
         name="">
@@ -544,7 +544,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_wheel_2_Link.STL" />
+          filename="package://rover_simulation/meshes/left_wheel_2_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -588,7 +588,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_wheel_3_Link.STL" />
+          filename="package://rover_simulation/meshes/left_wheel_3_Link.STL" />
       </geometry>
       <material
         name="">
@@ -602,7 +602,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/left_wheel_3_Link.STL" />
+          filename="package://rover_simulation/meshes/left_wheel_3_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -646,7 +646,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/lidar_link.STL" />
+          filename="package://rover_simulation/meshes/lidar_link.STL" />
       </geometry>
       <material
         name="">
@@ -660,7 +660,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/lidar_link.STL" />
+          filename="package://rover_simulation/meshes/lidar_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -702,7 +702,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/gps_Link.STL" />
+          filename="package://rover_simulation/meshes/gps_Link.STL" />
       </geometry>
       <material
         name="">
@@ -716,7 +716,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rover/meshes/gps_Link.STL" />
+          filename="package://rover_simulation/meshes/gps_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -748,9 +748,9 @@
         <odometryFrame>odom</odometryFrame>
         <robotBaseFrame>base_link</robotBaseFrame>
         <odometrySource>0</odometrySource>
-        <publishWheelTF>true</publishWheelTF>
+        <publishWheelTF>false</publishWheelTF>
         <publishOdomTF>false</publishOdomTF>
-        <publishWheelJointState>true</publishWheelJointState>
+        <publishWheelJointState>false</publishWheelJointState>
         <legacyMode>false</legacyMode>
     </plugin>
   </gazebo>
@@ -771,7 +771,7 @@
         </scan>
         <range>
           <min>0.2</min>
-          <max>4</max>
+          <max>6</max>
           <resolution>0.01</resolution>
         </range>
         <noise>
