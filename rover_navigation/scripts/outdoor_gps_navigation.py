@@ -3,89 +3,72 @@
 __author__ = "Debrup"
 
 import rospy
-from sensor_msgs.msg import NavSatFix
-import csv
-from utils import *
-from move_base_msgs.msg import MoveBaseAction
-from actionlib_msgs.msg import GoalStatus
 import actionlib
+import tf2_ros
+from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+from geodesy.utm import fromLatLong
+from utils import *
 
-class GPSNavigate:
-    def __init__(self, filepath):
-        rospy.init_node('outdoor_gps_navigation')
+class GPSGotoCoords:
+        def __init__(self, filePath):
+                rospy.init_node('gps_goto_coords')
+                rospy.on_shutdown(self.on_shutdown)
 
-        self.file_path = filepath
-        self.rate = rospy.Rate(10)
+                # setup tf listener
+                self.tfBuffer = tf2_ros.Buffer()
+                self.listener = tf2_ros.TransformListener(self.tfBuffer)
 
-        if isCSVEmpty(self.file_path):
-            rospy.loginfo("No GPS waypoints.")
-            rospy.signal_shutdown('No waypoints')
-        
-        # at this point, CSV file contains waypoints
-        rospy.loginfo("Waypoints received!")
+                # set the frame id of the movebase goal
+                self.movebase_goal = MoveBaseGoal()
+                self.movebase_goal.target_pose.header.frame_id = "utm"
+                
+                # get the array of GPS waypoints to be traversed
+                self.waypoint_arr = getGoals(filePath)
+               
+                # initialise movebase server and connect to it
+                self.move_base = actionlib.SimpleActionClient("move_base", MoveBaseAction)
+                rospy.loginfo("Waiting for the move_base action server to come up")
+                self.move_base.wait_for_server()
+                rospy.loginfo("Got move_base action server")
 
-        # variables storing current and next waypoints
-        self.lat_curr=0
-        self.long_curr=0
-        self.lat_next=0
-        self.long_next=0
+                # send the rover to each waypoint one by one
+                for waypoint in self.waypoint_arr:
+                        lat, long = waypoint
+                        self.go_to_goal(lat, long, self.movebase_goal)
+                        rospy.sleep(1)
+                
+                rospy.loginfo("Traversed all waypoints!")
+                rospy.signal_shutdown("Navigation finished")
 
-        # get waypoints in array format 
-        self.waypoint_arr = getGoals(self.file_path)
+        def go_to_goal(self, lat, lon, goal):
+                rospy.loginfo("Moving to (%f, %f)" % (lat, lon))
+                
+                # get the utm coordinates
+                point = fromLatLong(lat, lon)
 
-        # Create an action client for MoveBase
-        self.move_base_client = actionlib.SimpleActionClient('move_base', MoveBaseAction)
-        rospy.loginfo("Waiting for move_base action server...")
-        self.move_base_client.wait_for_server()
-        rospy.loginfo("Connected to move_base action server")
+                # get the current position
+                pos = self.tfBuffer.lookup_transform("utm", 'base_link', rospy.Time(0), rospy.Duration(2.0))
 
-        for i in range(len(self.waypoint_arr)):
-            
-            # set curr waypoint
-            self.lat_curr, self.long_curr = self.waypoint_arr[i]
-            rospy.loginfo("Target recieved! Latiitude: {} Longitude: {}".format(self.lat_curr, self.long_curr))
-            final_point = False
+                # build the movebase goal using the target point and current position
+                buildGoal(pos, point, goal)
+                
+                # send the built goal and wait for the result
+                self.move_base.send_goal(goal)
+                success = self.move_base.wait_for_result()
 
-            # set next waypoint if i<len-1
-            if i < len(self.waypoint_arr)-1:
-                self.lat_next, self.long_next = self.waypoint_arr[i+1]
-            # else set next to current
-            else:
-                self.lat_next, self.long_next = self.waypoint_arr[i]
-                final_point = True
+                if not success:
+                        self.move_base.cancel_goal()
+                        rospy.logwarn("Failed to reach (%f, %f). Error: %d" % (lat, lon, self.move_base.get_state()))
+                else:
+                        rospy.loginfo("The base moved to (%f, %f)" % (lat, lon))
+                
+        def on_shutdown(self):
+                rospy.loginfo("Canceling all goals")
+                self.move_base.cancel_all_goals()
 
-            # get UTM point
-            UTM_curr = LatLongToUTM(self.lat_curr, self.long_curr)
-            UTM_next = LatLongToUTM(self.lat_next, self.long_next)
 
-            # get map point
-            map_curr = UTMtoMapPoint(UTM_curr)
-            map_next = UTMtoMapPoint(UTM_next)
-
-                        
-            # generate goal
-            movebase_goal = buildGoal(map_point=map_curr, map_next=map_next, last_point=final_point)
-            
-            # send goal to movebase
-            self.move_base_client.send_goal(movebase_goal)
-            self.move_base_client.wait_for_result()
-
-            # Check the status of the goal
-            goal_status = self.move_base_client.get_state()
-
-            if goal_status == GoalStatus.SUCCEEDED:
-                rospy.loginfo("Goal reached!")
-            else:
-                rospy.logwarn("Goal failed!")
-                rospy.signal_shutdown("Goal could not be reached, terminating navigation")
-            
-            self.rate.sleep()
-
-        rospy.loginfo("Successfully traversed all points!")
-
-if __name__ == '__main__':
-    try:
-        GPSNavigate(filepath='/home/kratos/cyborg_ws/src/robofest_rover/rover_navigation/waypoints.csv')
-    except rospy.ROSInterruptException:
-        rospy.loginfo("Script terminated")
-        
+if __name__ == "__main__":
+        try:
+                GPSGotoCoords(filePath='/home/kratos/cyborg_ws/src/robofest_rover/rover_navigation/waypoints.csv')
+        except rospy.ROSInterruptException:
+                rospy.loginfo("Script terminated")

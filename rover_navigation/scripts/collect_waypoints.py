@@ -50,13 +50,11 @@ class CollectWaypoints:
         rospy.Subscriber('/navsat/fix', NavSatFix, self.gps_callback)
         rospy.Subscriber('/waypoint_collect_status', Int8, self.waypoint_collect_callback)
 
-        # Wait for the first GPS fix
-        while self.longitude_curr == 0 and self.latitude_curr == 0:
-            rospy.sleep(0.1)
+        rospy.loginfo("Run the waypoint_collect_status ROS node inorder to collect waypoints")
 
-        print("...Starting the waypoint collection node...")
-        print("To collect waypoint: Press 's'")
-        print("To terminate collection: Press 'q'")
+        # Wait for the first GPS fix and the first waypoint selection
+        while self.longitude_curr == 0 and self.latitude_curr == 0 and self.waypoint_collect_status == 0:
+            rospy.sleep(0.1)
 
         while not rospy.is_shutdown():
             
@@ -65,7 +63,6 @@ class CollectWaypoints:
                 
                 # If waypoint has been added, update current waypoint
                 if success:
-                    print("Prev waypoints updated")
                     self.latitude_last = self.latitude_curr
                     self.longitude_last = self.longitude_curr
 

@@ -7,7 +7,9 @@ import getch
 from std_msgs.msg import Int8
 
 def Key_press_check():
+
     rospy.init_node("waypoint_collect_status")
+    
     print("...Waypoint collect status script...")
     print('''Once the collect_gps_waypoints node is active:
              -Press 's' to collect waypoint

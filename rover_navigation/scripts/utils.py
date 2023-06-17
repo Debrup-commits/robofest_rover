@@ -1,11 +1,9 @@
+__author__ = "Debrup"
+
 import csv
 import rospy
-from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-from tf2_geometry_msgs import PointStamped
-import utm
 import tf2_ros as tf
 from tf.transformations import quaternion_from_euler
-
 import math
 
 def wipe_csv(filename):
@@ -88,70 +86,16 @@ def getGoals(filename):
 
     return goals
 
-def LatLongToUTM(lat, long):
-    utm_x, utm_y, _, _ = utm.from_latlon(latitude=lat, longitude=long)
+def buildGoal(pos, point, goal)->None:
+    # calculate angle between current position and goal
+    angle_to_goal = math.atan2(point.northing - pos.transform.translation.y, point.easting - pos.transform.translation.x)
+    odom_quat = quaternion_from_euler(0, 0, angle_to_goal)
 
-    UTM_point_output = PointStamped()
-    UTM_point_output.header.frame_id = "utm"
-    UTM_point_output.header.stamp = rospy.Time(0)
-    UTM_point_output.point.x = utm_x
-    UTM_point_output.point.y = utm_y
-    UTM_point_output.point.z = 0
-
-    return UTM_point_output
-
-def UTMtoMapPoint(UTM_input):
-    map_point_output = PointStamped()
-    map_point_output.header.stamp = rospy.Time.now()
-    map_point_output.header.frame_id = "map"
-    not_done=True
-
-    tf_buffer = tf.Buffer()
-    listener = tf.TransformListener(tf_buffer)
-    time_now = rospy.Time()
-
-    while not_done:
-        try:
-            if tf_buffer.can_transform("map", "utm", time_now, rospy.Duration(1.0)):
-                map_point_output = tf_buffer.transform(UTM_input, 'map')
-                not_done = False
-            else:
-                rospy.loginfo("Transformation unavailable")
-        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-            rospy.logwarn("Transformation failed!")
-            rospy.sleep(0.5)
-    
-    return map_point_output
-
-def buildGoal(map_point, map_next, last_point):
-    goal = MoveBaseGoal()
-
-    # Specify the frame in which the goal will be published
-    goal.target_pose.header.frame_id = "odom"
+    # set the goal message(Time stamp and target odometry to be achieved)
     goal.target_pose.header.stamp = rospy.Time.now()
-
-    # Specify x and y goal
-    goal.target_pose.pose.position.x = map_point.point.x
-    goal.target_pose.pose.position.y = map_point.point.y
-
-    # Specify heading goal using current and next points
-    if not last_point:
-        x_curr = map_point.point.x
-        y_curr = map_point.point.y
-        x_next = map_next.point.x
-        y_next = map_next.point.y
-        delta_x = x_next - x_curr
-        delta_y = y_next - y_curr
-        yaw_curr = math.atan2(delta_y, delta_x)
-
-        # Specify orientation using quaternions
-        quat = quaternion_from_euler(0, 0, yaw_curr)
-        goal.target_pose.pose.orientation.x = quat[0]
-        goal.target_pose.pose.orientation.y = quat[1]
-        goal.target_pose.pose.orientation.z = quat[2]
-        goal.target_pose.pose.orientation.w = quat[3]
-    else:
-        goal.target_pose.pose.orientation.w = 1.0
-
-    return goal
-
+    goal.target_pose.pose.position.x = point.easting
+    goal.target_pose.pose.position.y = point.northing
+    goal.target_pose.pose.orientation.x = odom_quat[0]
+    goal.target_pose.pose.orientation.y = odom_quat[1]
+    goal.target_pose.pose.orientation.z = odom_quat[2]
+    goal.target_pose.pose.orientation.w = odom_quat[3]
