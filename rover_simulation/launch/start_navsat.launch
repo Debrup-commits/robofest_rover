@@ -11,6 +11,24 @@
         <param name="use_odometry_yaw" value="false"/>
         <param name="wait_for_datum" value="false"/>
 
+<<<<<<< HEAD
     </node>
 
+=======
+        <!-- <remap from="/imu/data" to="/your/imu/topic" />
+        <remap from="/gps/fix" to="/your/gps/fix/topic" />
+        <remap from="/odometry/filtered" to="/your/robot_localization/output/topic" /> -->
+
+        <remap from="gps/fix" to="navsat/fix"/>
+        <remap from="odometry/filtered" to="/jackal_velocity_controller/odom"/>
+
+    </node>
+
+    <!-- Launch Navsat_transform node -->
+  <!-- <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true">
+    <remap from="gps/fix" to="garmin_gps/fix"/>
+    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+  </node> -->
+
+>>>>>>> 5802f4cfd3a9d3e5e1c81e45ed7333c343ae2f1e
 </launch>

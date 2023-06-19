@@ -3,8 +3,13 @@ local_costmap:
    robot_base_frame: base_link
    update_frequency: 10.0
    publish_frequency: 10.0
+<<<<<<< HEAD
    width: 15.0
    height: 15.0
+=======
+   width: 100.0
+   height: 100.0
+>>>>>>> 5802f4cfd3a9d3e5e1c81e45ed7333c343ae2f1e
    resolution: 0.05
    static_map: false
    rolling_window: true

@@ -10,4 +10,9 @@ oscillation_timeout: 0.0
 oscillation_distance: 0.5
 
 recovery_behavior_enabled: true
+<<<<<<< HEAD
 clearing_rotation_allowed: true
+=======
+clearing_rotation_allowed: true
+global_frame: odom
+>>>>>>> 5802f4cfd3a9d3e5e1c81e45ed7333c343ae2f1e
