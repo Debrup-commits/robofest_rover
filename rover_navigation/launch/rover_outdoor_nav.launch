@@ -1,0 +1,10 @@
+<launch>
+ <!-- launch the localisation node -->
+ <include file="$(find rover_localisation)/launch/rover_localisation.launch"/>
+ 
+ <!-- load rviz -->
+ <node pkg="rviz" type="rviz" name="rviz" args="-d $(find rover_navigation)/rviz/odom_mapping.rviz"/>
+
+ <!-- run movebase -->
+ <include file="$(find rover_navigation)/launch/rover_movebase.launch"/>
+</launch>

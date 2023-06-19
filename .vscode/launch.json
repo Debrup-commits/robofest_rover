@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: ROS",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/bin/python3",
+            "cwd": "/home/kratos/cyborg_ws/src/robofest_rover/rover_navigation/scripts",
+            "console": "integratedTerminal",
+            "env": {
+                "ROS_MASTER_URI": "http://localhost:11311",  // Update with your ROS master URI
+                "ROS_PACKAGE_PATH": "/home/kratos/cyborg_ws/src/robofest_rover/rover_navigation"  // Update with the path to your ROS package
+            }
+        }
+    ]
+}

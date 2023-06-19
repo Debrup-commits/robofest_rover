@@ -1,0 +1,26 @@
+<launch>
+  <!-- initialise parameters -->
+  <arg name="robot_name" default="robofest_rover"/>
+  <arg name="model" default="$(find rover_simulation)/urdf/rover.urdf"/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="1.0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="0"/>
+
+  <!-- load robot description -->
+  <param name="robot_description" command="xacro $(arg model)" />
+
+  <!-- Send fake joint values-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+
+  <!-- Send robot states to tf -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+  </node>
+
+  <!-- spawn urdf -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-x $(arg x) -y $(arg y) -z $(arg z) -unpause -urdf -param robot_description -model $(arg robot_name)" output="screen" />
+</launch>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+  <rosparam command="load" file="$(find rover_localisation)/params/ekf_params.yaml" />
+  <rosparam command="load" file="$(find rover_localisation)/params/navsat_params.yaml" />
+
+  <!-- Navsat transform node -->
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true">
+      <remap from="/gps/fix" to="/navsat/fix"/>
+  </node>
+
+  <!-- Ekf localization node -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_map" clear_params="true"/>
+</launch>

@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rover">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0536748217163849 0.0016319931263985 0.0776942084223818"
+        rpy="0 0 0" />
+      <mass
+        value="8.38896979047718" />
+      <inertia
+        ixx="0.0824198965263737"
+        ixy="-4.43100061742721E-10"
+        ixz="6.66434163570972E-11"
+        iyy="0.0946397388483545"
+        iyz="1.38606200029328E-11"
+        izz="0.167270604137266" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="main_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.207122673135177 -0.0648360819489456 -0.125680614494976"
+        rpy="0 0 0" />
+      <mass
+        value="2.85285706586389" />
+      <inertia
+        ixx="0.00713026467885588"
+        ixy="-1.60651190867891E-07"
+        ixz="-0.00313845519395342"
+        iyy="0.0145758954501888"
+        iyz="-0.000280427322034362"
+        izz="0.0138758937534045" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/main_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/main_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="main_right_joint "
+    type="fixed">
+    <origin
+      xyz="0 -0.25 0.06"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="main_right_Link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_Link">
+    <inertial>
+      <origin
+        xyz="-0.00103407339158612 0.0101825263563988 -0.176022632424095"
+        rpy="0 0 0" />
+      <mass
+        value="2.83580442969842" />
+      <inertia
+        ixx="0.00746028039457789"
+        ixy="-2.50227056518328E-08"
+        ixz="9.96253761169579E-06"
+        iyy="0.00588770540405177"
+        iyz="-4.50112376686556E-06"
+        izz="0.0090359215750643" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0.843137254901961 0.843137254901961 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint"
+    type="fixed">
+    <origin
+      xyz="0.33191 -0.1365 -0.11106"
+      rpy="0 0 0" />
+    <parent
+      link="main_right_Link" />
+    <child
+      link="right_Link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_wheel_1_Link">
+    <inertial>
+      <origin
+        xyz="-0.0001040564919077 -0.07423056161841 -3.87404231570326E-05"
+        rpy="0 0 0" />
+      <mass
+        value="2.61333462277274" />
+      <inertia
+        ixx="0.0233445299571817"
+        ixy="-1.27517919191306E-07"
+        ixz="-9.86569992668998E-07"
+        iyy="0.0336422624911562"
+        iyz="2.31382867305405E-07"
+        izz="0.023347329272668" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_wheel_1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_wheel_1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_1_joint"
+    type="continuous">
+    <origin
+      xyz="0.32215 -0.08716 -0.21995"
+      rpy="0 0 0" />
+    <parent
+      link="right_Link" />
+    <child
+      link="right_wheel_1_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_wheel_2_Link">
+    <inertial>
+      <origin
+        xyz="-0.000102525401731779 -0.0742305616184099 -4.26276423725058E-05"
+        rpy="0 0 0" />
+      <mass
+        value="2.61333462277271" />
+      <inertia
+        ixx="0.0233446080967335"
+        ixy="-1.36132358068656E-07"
+        ixz="-1.08901414997242E-06"
+        iyy="0.033642262491156"
+        iyz="2.26421801123164E-07"
+        izz="0.0233472511331158" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_wheel_2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_wheel_2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.32449 -0.08716 -0.21615"
+      rpy="0 0 0" />
+    <parent
+      link="right_Link" />
+    <child
+      link="right_wheel_2_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_wheel_3_Link">
+    <inertial>
+      <origin
+        xyz="0.000104658318834355 -0.0742305616184098 3.7083826572748E-05"
+        rpy="0 0 0" />
+      <mass
+        value="2.61333462277273" />
+      <inertia
+        ixx="0.0233444993462801"
+        ixy="1.23829052998644E-07"
+        ixz="-9.41644174942918E-07"
+        iyy="0.0336422624911562"
+        iyz="-2.33377840775615E-07"
+        izz="0.0233473598835696" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_wheel_3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/right_wheel_3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.57252 -0.16266 -0.28629"
+      rpy="0 0 0" />
+    <parent
+      link="main_right_Link" />
+    <child
+      link="right_wheel_3_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="main_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.207121573517651 0.0648362330129243 -0.125679977812972"
+        rpy="0 0 0" />
+      <mass
+        value="2.85287199052498" />
+      <inertia
+        ixx="0.0071299944781879"
+        ixy="1.47211908955465E-07"
+        ixz="-0.00313801675679204"
+        iyy="0.0145759184983927"
+        iyz="0.000280435682159991"
+        izz="0.013876217497563" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/main_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/main_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="main_left_joint"
+    type="fixed">
+    <origin
+      xyz="0 0.25 0.06"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="main_left_Link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_Link">
+    <inertial>
+      <origin
+        xyz="-0.00830883561017781 -0.0101825271447156 -0.175829445509165"
+        rpy="0 0 0" />
+      <mass
+        value="2.83580429961089" />
+      <inertia
+        ixx="0.00746184147402411"
+        ixy="2.14789314566334E-07"
+        ixz="7.70584455069E-05"
+        iyy="0.0058877055315575"
+        iyz="4.49430559451764E-06"
+        izz="0.00903436044844602" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.184313725490196 0.43921568627451 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint"
+    type="fixed">
+    <origin
+      xyz="0.33191 0.1365 -0.11106"
+      rpy="0 0 0" />
+    <parent
+      link="main_left_Link" />
+    <child
+      link="left_Link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_wheel_1_Link">
+    <inertial>
+      <origin
+        xyz="0.000110959378041509 0.0742305616184091 4.07312157983675E-06"
+        rpy="0 0 0" />
+      <mass
+        value="2.61333462277267" />
+      <inertia
+        ixx="0.0233442425288218"
+        ixy="-2.91608989114214E-08"
+        ixz="-2.934324984962E-07"
+        iyy="0.0336422624911555"
+        iyz="-2.62580452118819E-07"
+        izz="0.0233476167010269" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_wheel_1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_wheel_1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_1_joint"
+    type="continuous">
+    <origin
+      xyz="0.31256 0.08716 -0.23312"
+      rpy="0 0 0" />
+    <parent
+      link="left_Link" />
+    <child
+      link="left_wheel_1_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_wheel_2_Link">
+    <inertial>
+      <origin
+        xyz="0.000108404976036092 0.0742305616184098 2.40194726223164E-05"
+        rpy="0 0 0" />
+      <mass
+        value="2.61333462277272" />
+      <inertia
+        ixx="0.0233444564091624"
+        ixy="1.86775817862951E-08"
+        ixz="-8.7294153883288E-07"
+        iyy="0.0336422624911561"
+        iyz="-2.63533676941707E-07"
+        izz="0.0233474028206871" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_wheel_2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_wheel_2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.33336 0.08716 -0.20261"
+      rpy="0 0 0" />
+    <parent
+      link="left_Link" />
+    <child
+      link="left_wheel_2_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_wheel_3_Link">
+    <inertial>
+      <origin
+        xyz="0.000110329321879959 0.0742305616184099 1.24905815858112E-05"
+        rpy="0 0 0" />
+      <mass
+        value="2.61333462277275" />
+      <inertia
+        ixx="0.0233443064544561"
+        ixy="-9.12923510347049E-09"
+        ixz="-5.45630132179492E-07"
+        iyy="0.0336422624911561"
+        iyz="-2.64036946146049E-07"
+        izz="0.0233475527753935" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_wheel_3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/left_wheel_3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.57252 0.17266 -0.28629"
+      rpy="0 0 0" />
+    <parent
+      link="main_left_Link" />
+    <child
+      link="left_wheel_3_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="-0.00701820465484082 0.000193050942876805 -0.0218318657433744"
+        rpy="0 0 0" />
+      <mass
+        value="1.27729502358402" />
+      <inertia
+        ixx="0.000593155004344456"
+        ixy="-8.3078151906336E-07"
+        ixz="-0.000162730950395813"
+        iyy="0.000933018731061215"
+        iyz="3.17002772661612E-06"
+        izz="0.00106895549805298" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.30015 -9.7458E-05 0.2127"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      effort="1"
+      velocity="0" />
+  </joint>
+  <link
+    name="gps_Link">
+    <inertial>
+      <origin
+        xyz="0.000160323077888824 0.000159713862371902 0.00476772012157511"
+        rpy="0 0 0" />
+      <mass
+        value="0.0150442699487831" />
+      <inertia
+        ixx="2.9294543165391E-06"
+        ixy="-4.15267136872039E-08"
+        ixz="4.6847607363609E-09"
+        iyy="2.92944834301397E-06"
+        iyz="4.72466461820552E-09"
+        izz="5.71408714620091E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/gps_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_simulation/meshes/gps_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gps_joint"
+    type="fixed">
+    <origin
+      xyz="0.35 -0.25 0.36"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="gps_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <!-- diff drive multi wheel plugin -->
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive_multiwheel.so">
+        <updateRate>50</updateRate>
+        <leftJoints>left_wheel_3_joint left_wheel_2_joint left_wheel_1_joint</leftJoints>
+        <rightJoints>right_wheel_3_joint right_wheel_2_joint right_wheel_1_joint</rightJoints>
+        <wheelSeparation>0.11</wheelSeparation>
+        <wheelDiameter>0.27</wheelDiameter>
+        <wheelAcceleration>0.2</wheelAcceleration>
+        <wheelTorque>0</wheelTorque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <odometrySource>0</odometrySource>
+        <publishWheelTF>false</publishWheelTF>
+        <publishOdomTF>false</publishOdomTF>
+        <publishWheelJointState>false</publishWheelJointState>
+        <legacyMode>false</legacyMode>
+    </plugin>
+  </gazebo>
+  <!-- lidar plugin -->
+  <gazebo reference="lidar_link">
+    <sensor type="ray" name="head_rplidar_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.25</min_angle>
+            <max_angle>1.25</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.2</min>
+          <max>6</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name='laser' filename='libgazebo_ros_laser.so'>
+        <topicName>scan</topicName>
+        <frameName>lidar_link</frameName>
+        <always_on>1</always_on>
+        <update_rate>40</update_rate>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <!-- imu plugin -->
+  <gazebo>
+    <plugin filename="libhector_gazebo_ros_imu.so" name="imu_controller">
+      <robotNamespace>/</robotNamespace>
+      <frameName>base_link</frameName>
+      <updateRate>50.0</updateRate>
+      <bodyName>base_link</bodyName>
+      <topicName>imu/data</topicName>
+      <accelDrift>0.005 0.005 0.005</accelDrift>
+      <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
+      <rateDrift>0.005 0.005 0.005 </rateDrift>
+      <rateGaussianNoise>0.005 0.005 0.005 </rateGaussianNoise>
+      <headingDrift>0.005</headingDrift>
+      <headingGaussianNoise>0.005</headingGaussianNoise>
+    </plugin>
+  </gazebo>
+  <!-- gps plugin -->
+  <gazebo>
+    <plugin filename="libhector_gazebo_ros_gps.so" name="gps_controller">
+      <robotNamespace>/</robotNamespace>
+      <updateRate>40</updateRate>
+      <bodyName>base_link</bodyName>
+      <frameId>gps_Link</frameId>
+      <topicName>navsat/fix</topicName>
+      <velocityTopicName>navsat/vel</velocityTopicName>
+      <referenceLatitude>49.9</referenceLatitude>
+      <referenceLongitude>8.9</referenceLongitude>
+      <referenceHeading>0</referenceHeading>
+      <referenceAltitude>0</referenceAltitude>
+      <drift>0.0001 0.0001 0.0001</drift>
+    </plugin>
+  </gazebo>
+</robot>
+
