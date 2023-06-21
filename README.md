@@ -16,9 +16,27 @@
 - [math](https://docs.python.org/3/library/math.html)
   - Installation: ``` pip3 install math ```
 
-## Setting up the package
+## Setting up the repo
+### It is assumed that you already have a ROS workspace setup before setting up this repository
+
+### clone the repo in the src of your workspace
+```
+cd <path to your ROS workspace>/src
+git clone https://github.com/Debrup-commits/robofest_rover.git
 ```
 
+### Build the packages
+```
+catkin build rover_simulation
+catkin build rover_navigation
+catkin build rover_localisation
+```
+
+### source your bash
+```
+cd ..
+source devel/setup.bash
+```
 ## Running the simulated world
 Launch the simulated arena with this command:
 ```
